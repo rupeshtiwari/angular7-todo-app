@@ -1,5 +1,33 @@
-Task: <input />
-<button>Add</button>
-<div>
-  
-</div>
+<form [formGroup]="todoForm">
+  <mat-form-field>
+    <input matInput placeholder="Enter Task" formControlName="task" />
+    <mat-error
+      *ngIf="
+        todoForm.controls.task.invalid &&
+        (todoForm.controls.task.dirty || todoForm.controls.task.touched)
+      "
+    >
+      {{ getErrorMessage() }}
+    </mat-error>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="!todoForm.valid"
+    (click)="create()"
+    type="submit"
+  >
+    Create
+  </button>
+</form>
+
+<mat-card *ngFor="let todo of todoList">
+  <mat-card-content>
+    {{ todo.task }}
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-icon-button color="warn" (click)="deleteTodo(todo.id)">
+      <mat-icon aria-label="icon-button with a delete icon">delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
