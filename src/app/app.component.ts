@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'rt-todo';
+  todos = [];
+  create(task) {
+    this.todos.push({ id: Date.now, task });
+  }
 }
