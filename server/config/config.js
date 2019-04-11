@@ -6,7 +6,7 @@ module.exports = {
   port: envProps.SERVER_PORT || 8080,
   env: envProps.NODE_ENV || 'development',
   mongo: {
-    host: envProps.MONGO_HOST,
+    host: envProps.MONGODB_URI,
     port: envProps.MONGO_PORT,
     isDebug: envProps.MONGOOSE_DEBUG
   }
