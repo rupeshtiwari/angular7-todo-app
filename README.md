@@ -1,6 +1,9 @@
 # RtTodo
 
+See live app https://rt-angular-7-todo-app.herokuapp.com/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+
 
 ## Development server
 
