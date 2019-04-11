@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const envProps = process.env;
 module.exports = {
-  port: envProps.SERVER_PORT || 8080,
+  port: envProps.PORT || 8080,
   env: envProps.NODE_ENV || 'development',
   mongo: {
     host: envProps.MONGODB_URI,
