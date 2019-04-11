@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "node server/index.js",
-    "start:dev": "nodemon server/index.js",
-    "start:app": "ng serve",
+    "start:server": "nodemon server/index.js",
+    "start:client": "ng serve",
     "build": "ng build",
     "build:prod": "npm run build -- --prod",
     "test": "ng test",

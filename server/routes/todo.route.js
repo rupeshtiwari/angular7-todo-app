@@ -4,7 +4,7 @@ const todoCtrl = require('../controllers/todo.controller');
 
 const router = express.Router();
 
-router.post('/insert', asyncHandler(insert));
+router.post('/save', asyncHandler(insert));
 
 async function insert(req, res, next) {
   console.log('todo from api', req.body);

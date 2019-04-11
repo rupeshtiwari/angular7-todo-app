@@ -13,7 +13,7 @@ const app = express();
 if (config.env === 'development') {
   app.use(logger('dev'));
 }
-const distDir = path.join(__dirname, '../dist');
+const distDir = path.join(__dirname, '../../dist');
 
 // dist folder hosting
 
