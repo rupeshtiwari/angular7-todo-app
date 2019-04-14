@@ -19,11 +19,6 @@ const distDir = path.join(__dirname, '../../dist');
 
 app.use(express.static(distDir));
 
-// index html serving
-app.get(/^((?!(api)).)*/, (req, res) =>
-  res.sendFile(path.join(distDir, 'index.html'))
-);
-
 // api body parsing
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,5 +31,8 @@ app.use(cors());
 
 // API router
 app.use('/api/', routes);
+
+// index html serving
+app.get('*', (req, res) => res.sendFile(path.join(distDir, 'index.html')));
 
 module.exports = app;

@@ -1,4 +1,4 @@
-<form [formGroup]="todoForm">
+<form [formGroup]="todoForm" class="todo-form">
   <mat-form-field>
     <input matInput placeholder="Enter Task" formControlName="task" />
     <mat-error
@@ -21,14 +21,14 @@
   </button>
 </form>
 
-<mat-card *ngFor="let todo of todoList">
-  <mat-card-content>
-    {{ todo.task }}
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-icon-button color="warn" (click)="deleteTodo(todo.id)">
-      <mat-icon aria-label="icon-button with a delete icon">delete</mat-icon>
-      delete
-    </button>
-  </mat-card-actions>
-</mat-card>
+<div class="todo-list">
+  <mat-card *ngFor="let todo of todoList" class="todo-card">
+    <mat-card-content> {{ todo.task }} </mat-card-content>
+    <mat-card-actions>
+      <button mat-icon-button color="warn" (click)="deleteTodo(todo._id)">
+        <mat-icon aria-label="icon-button with a delete icon">delete</mat-icon>
+        delete
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

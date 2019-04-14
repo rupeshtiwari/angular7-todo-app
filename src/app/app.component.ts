@@ -1,22 +1,29 @@
 import { FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodoService } from './todo.service';
+import { Observable, Subject } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'rt-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   todoForm: FormGroup;
   todoList = [];
   id = 1;
+
   constructor(private todoService: TodoService) {
     this.todoForm = new FormGroup({
       task: new FormControl('', [Validators.required, Validators.minLength(2)])
     });
+  }
+
+  ngOnInit() {
+    this.getAllTodos();
   }
 
   getErrorMessage() {
@@ -32,14 +39,19 @@ export class AppComponent {
   create() {
     this.todoService
       .saveTodo(this.todo)
-      .subscribe(todo => this.todoList.push({ ...this.todo }));
+      .subscribe(todo => this.todoList.push(todo));
+  }
+
+  private getAllTodos() {
+    this.todoService.getAllTodos().subscribe(todos => (this.todoList = todos));
   }
 
   get todo() {
-    return { id: this.id++, task: this.task };
+    return { task: this.task };
   }
+
   deleteTodo(id: number) {
-    this.todoList = this.todoList.filter(t => t.id !== id);
+    this.todoList = this.todoList.filter(t => t._id !== id);
   }
 
   get task() {
