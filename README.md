@@ -11,8 +11,8 @@ See live app https://rt-angular-7-todo-app.herokuapp.com/
 
 ## Prerequisite
 
-`install node.js locally`
-`install mongodb locally`
+- `install node.js locally`
+- `install mongodb locally`
 
 ## First time install & start
 
