@@ -1,12 +1,9 @@
 .todo-form {
   align-items: center;
-  justify-content: center;
+  justify-content: stretch;
   display: flex;
+  margin: 10px;
 }
-.todo-list {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  display: flex;
+.mat-list {
+  width: 500px;
 }
- 

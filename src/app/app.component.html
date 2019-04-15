@@ -1,3 +1,8 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    Angular 7 & Mongo Db Todo List
+  </mat-toolbar-row>
+</mat-toolbar>
 <form [formGroup]="todoForm" class="todo-form">
   <mat-form-field>
     <input matInput placeholder="Enter Task" formControlName="task" />
@@ -20,15 +25,18 @@
     Create
   </button>
 </form>
+<mat-divider></mat-divider>
 
-<div class="todo-list">
-  <mat-card *ngFor="let todo of todoList" class="todo-card">
-    <mat-card-content> {{ todo.task }} </mat-card-content>
-    <mat-card-actions>
-      <button mat-icon-button color="warn" (click)="deleteTodo(todo._id)">
-        <mat-icon aria-label="icon-button with a delete icon">delete</mat-icon>
-        delete
-      </button>
-    </mat-card-actions>
-  </mat-card>
-</div>
+<mat-list>
+  <h3 mat-subheader>Notes</h3>
+  <mat-list-item *ngFor="let todo of todoList">
+    <mat-icon mat-list-icon>note</mat-icon>
+    <h4 mat-line>{{ todo.task }}</h4>
+    <p mat-line>{{ todo.createdAt | date }}</p>
+    <button mat-icon-button color="warn" (click)="deleteTodo(todo._id)">
+      <mat-icon mat-list-icon aria-label="icon-button with a delete icon"
+        >delete</mat-icon
+      >
+    </button>
+  </mat-list-item>
+</mat-list>

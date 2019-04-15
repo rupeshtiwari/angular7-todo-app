@@ -2,7 +2,8 @@ const Todo = require('../models/todo');
 
 module.exports = {
   insert,
-  getAllTodos
+  getAllTodos,
+  deleteTodo
 };
 
 async function insert(todo) {
@@ -11,4 +12,8 @@ async function insert(todo) {
 
 async function getAllTodos() {
   return await Todo.find({});
+}
+
+async function deleteTodo(id) {
+  return await Todo.deleteOne({ _id: id });
 }

@@ -37,9 +37,10 @@ export class AppComponent implements OnInit {
   }
 
   create() {
-    this.todoService
-      .saveTodo(this.todo)
-      .subscribe(todo => this.todoList.push(todo));
+    this.todoService.saveTodo(this.todo).subscribe(todo => {
+      this.todoList.push(todo);
+      this.todoForm.controls.task.reset();
+    });
   }
 
   private getAllTodos() {
@@ -51,7 +52,9 @@ export class AppComponent implements OnInit {
   }
 
   deleteTodo(id: number) {
-    this.todoList = this.todoList.filter(t => t._id !== id);
+    this.todoService.delete(id).subscribe(s => {
+      this.todoList = this.todoList.filter(t => t._id !== id);
+    });
   }
 
   get task() {
