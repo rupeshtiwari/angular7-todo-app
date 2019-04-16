@@ -4,7 +4,8 @@ import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from './todo.service';
 import { Observable, Subject } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
+import { Todo } from './todo';
 
 @Component({
   selector: 'rt-root',
@@ -38,13 +39,23 @@ export class AppComponent implements OnInit {
 
   create() {
     this.todoService.saveTodo(this.todo).subscribe(todo => {
-      this.todoList.push(todo);
+      this.todoList.unshift(todo);
       this.todoForm.controls.task.reset();
     });
   }
 
   private getAllTodos() {
-    this.todoService.getAllTodos().subscribe(todos => (this.todoList = todos));
+    this.todoService
+      .getAllTodos()
+      .pipe(
+        map(todos =>
+          todos.sort(
+            (a: Todo, b: Todo) =>
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          )
+        )
+      )
+      .subscribe(todos => (this.todoList = todos));
   }
 
   get todo() {
