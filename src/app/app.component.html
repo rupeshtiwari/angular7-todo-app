@@ -1,14 +1,16 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span mat> Angular 7 & Mongo Db Todo List</span>
-    <div class="avtar">
+    <div class="avtar" [matMenuTriggerFor]="menu">
       <img
-        [matMenuTriggerFor]="menu"
+        href="http://twitter.com/roopkt"
+        target="_blank"
         class="avtar"
         class="glostick__user__avatar"
         src="https://gravatar.com/avatar/b021988489dde1760db2f49e8956e3fe"
         alt="roopkt@gmail.com"
       />
+      info@rupeshtiwari.com
     </div>
     <mat-menu #menu="matMenu">
       <button mat-button-raised mat-menu-item>
