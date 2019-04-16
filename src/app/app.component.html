@@ -20,9 +20,7 @@
 
 <mat-card class="example-card">
   <mat-card-header>
-    <mat-card-title>
-      Todo List
-    </mat-card-title>
+    <mat-card-title> </mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <form [formGroup]="todoForm" class="todo-form">
@@ -37,7 +35,13 @@
                 required
                 name="task"
               />
-              <mat-error *ngIf="task.invalid && (task.dirty || task.touched)">
+              <mat-error
+                *ngIf="
+                  todoForm.controls.task.invalid &&
+                  (todoForm.controls.task.dirty ||
+                    todoForm.controls.task.touched)
+                "
+              >
                 {{ getErrorMessage() }}
               </mat-error>
             </mat-form-field>
@@ -59,7 +63,7 @@
     <mat-divider></mat-divider>
 
     <mat-list>
-      <h3 mat-subheader>Notes</h3>
+      <h3 mat-subheader>Todos</h3>
       <mat-list-item *ngFor="let todo of todoList">
         <mat-icon mat-list-icon>note</mat-icon>
         <h4 mat-line>{{ todo.task }}</h4>
