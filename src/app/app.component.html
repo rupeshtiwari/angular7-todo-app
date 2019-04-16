@@ -1,6 +1,20 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    Angular 7 & Mongo Db Todo List
+    <span mat> Angular 7 & Mongo Db Todo List</span>
+    <div class="avtar">
+      <img
+        [matMenuTriggerFor]="menu"
+        class="avtar"
+        class="glostick__user__avatar"
+        src="https://gravatar.com/avatar/b021988489dde1760db2f49e8956e3fe"
+        alt="roopkt@gmail.com"
+      />
+    </div>
+    <mat-menu #menu="matMenu">
+      <button mat-button-raised mat-menu-item>
+        <mat-icon>logout</mat-icon> logout
+      </button>
+    </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -21,14 +35,9 @@
                 placeholder="Enter Task"
                 formControlName="task"
                 required
+                name="task"
               />
-              <mat-error
-                *ngIf="
-                  todoForm.controls.task.invalid &&
-                  (todoForm.controls.task.dirty ||
-                    todoForm.controls.task.touched)
-                "
-              >
+              <mat-error *ngIf="task.invalid && (task.dirty || task.touched)">
                 {{ getErrorMessage() }}
               </mat-error>
             </mat-form-field>
